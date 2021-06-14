@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>NINJA GOLD</h1>    
+        <h3>Gold: {{gold}}</h3>
+        <form action="/process_money" method="post">
+            <input type=hidden name="place" value="farm">
+            <input type="submit" value="Farm">          
+        </form>
+        <form action="/process_money" method="post">
+            <input type=hidden name="place" value="cave">
+            <input type="submit" value="Cave">          
+        </form>
+        <form action="/process_money" method="post">
+            <input type=hidden name="place" value="house">
+            <input type="submit" value="House">          
+        </form>
+        <form action="/process_money" method="post">
+            <input type=hidden name="place" value="casino">
+            <input type="submit" value="Casino">          
+        </form>
+        <a href="/reset">Click to reset score</a>
+        <p>Activities</p>
+        {% for words in session['textlog']: %}
+            {% if "lost" in words: %}
+                <p style="color: red">{{words}}</p>
+            {% else: %}
+                <p style="color: green">{{words}}</p>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>
